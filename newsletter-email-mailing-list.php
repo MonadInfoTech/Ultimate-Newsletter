@@ -5,7 +5,7 @@
  * Description: Easily allow your readers to get new posts by email (automatically).
  * Author: s-feeds
  * Author URI: http://s-feeds.com
- * Version: 1.0
+ * Version: 1.1
  * License: GPLv2 or later
  */
 
@@ -184,4 +184,44 @@ function sanitize_hex_color( $color )
     if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
         return $color;
 }
+
+add_action('wp_head', 'un_ultimatefbmetatags');
+function un_ultimatefbmetatags()
+{
+	$feed_id = get_option('un_feed_id');
+	$verification_code = get_option('un_verificatiom_code');
+	if(!empty($feed_id) && !empty($verification_code) && $verification_code != "no" )
+	{
+	    echo '<meta name="specificfeeds-verification-code-'.$feed_id.'" content="'.$verification_code.'"/>';
+	}
+}
+//Get verification code
+if(is_admin())
+{	
+	$code = get_option('un_verificatiom_code');
+	if(empty($code))
+	{
+		add_action("init", "un_getverification_code");
+	}
+}
+function un_getverification_code()
+{
+	$feed_id = get_option('un_feed_id');
+	$curl = curl_init();  
+    curl_setopt_array($curl, array(
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_URL => 'http://www.specificfeeds.com/wordpress/getVerifiedCode_plugin',
+        CURLOPT_USERAGENT => 'sf get verification',
+        CURLOPT_POST => 1,
+        CURLOPT_POSTFIELDS => array(
+            'feed_id' => $feed_id
+        )
+    ));
+     // Send the request & save response to $resp
+	$resp = curl_exec($curl);
+	$resp = json_decode($resp);
+	update_option('un_verificatiom_code', $resp->code);
+	curl_close($curl);
+}
+
 ?>

@@ -1,7 +1,7 @@
 <?php
 function un_activate_plugin()
 {
-	update_option("un_pluginVersion", "1.0");
+	update_option("un_pluginVersion", "1.1");
 	
 	/* subscription form */
     $options1 = array('un_form_adjustment'=>'yes',
@@ -83,6 +83,7 @@ function un_Unistall_plugin()
 	delete_option('un_feed_id');
 	delete_option('un_redirect_url');
 	delete_option('un_pluginVersion');
+	delete_option('un_verificatiom_code');
 }
 /* add admin menus */
 function un_admin_menu()
