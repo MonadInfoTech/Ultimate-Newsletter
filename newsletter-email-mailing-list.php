@@ -199,7 +199,8 @@ function un_ultimatefbmetatags()
 if(is_admin())
 {	
 	$code = get_option('un_verificatiom_code');
-	if(empty($code))
+	$feed_id = get_option('un_feed_id');
+	if(empty($code) && !empty($feed_id))
 	{
 		add_action("init", "un_getverification_code");
 	}
