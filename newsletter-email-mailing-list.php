@@ -1,11 +1,11 @@
 <?php
 /*
- * Plugin Name: Newsletter Email Mailing List
+ * Plugin Name: Ultimate Subscribe (Newsletter)
  * Plugin URI: http://s-feeds.com
  * Description: Easily allow your readers to get new posts by email (automatically).
  * Author: s-feeds
  * Author URI: http://s-feeds.com
- * Version: 1.1
+ * Version: 1.2
  * License: GPLv2 or later
  */
 
