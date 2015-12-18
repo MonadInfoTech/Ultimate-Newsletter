@@ -5,7 +5,7 @@
  * Description: Easily allow your readers to get new posts by email (automatically).
  * Author: s-feeds
  * Author URI: http://s-feeds.com
- * Version: 1.2
+ * Version: 1.2.1
  * License: GPLv2 or later
  */
 
@@ -175,14 +175,17 @@ function un_addStyleFunction()
 	<?php
 }
 //Sanitize color code
-function sanitize_hex_color( $color )
+if(!function_exists(sanitize_hex_color))
 {
-    if ( '' === $color )
-        return '';
- 
-    // 3 or 6 hex digits, or the empty string.
-    if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
-        return $color;
+	function sanitize_hex_color( $color )
+	{
+		if ( '' === $color )
+			return '';
+	 
+		// 3 or 6 hex digits, or the empty string.
+		if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
+			return $color;
+	}
 }
 
 add_action('wp_head', 'un_ultimatefbmetatags');

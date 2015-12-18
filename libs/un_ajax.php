@@ -56,7 +56,7 @@ function un_options_unsave1()
 		'un_form_field_text'		=>	sanitize_text_field(stripslashes($un_form_field_text)),
 		'un_form_field_font'		=>	sanitize_text_field($un_form_field_font),
 		'un_form_field_fontstyle'	=>	sanitize_text_field($un_form_field_fontstyle),
-		'un_form_field_fontcolor'	=>	sanitize_hex_color($un_form_field_fontcolor),
+		/*'un_form_field_fontcolor'	=>	sanitize_hex_color($un_form_field_fontcolor),*/
 		'un_form_field_fontsize'	=>	intval($un_form_field_fontsize),
 		'un_form_field_fontalign'	=>	sanitize_text_field($un_form_field_fontalign),
 		
