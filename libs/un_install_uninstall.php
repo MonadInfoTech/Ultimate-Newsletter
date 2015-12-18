@@ -1,7 +1,7 @@
 <?php
 function un_activate_plugin()
 {
-	update_option("un_pluginVersion", "1.21");
+	update_option("un_pluginVersion", "1.3");
 	
 	/* subscription form */
     $options1 = array('un_form_adjustment'=>'yes',

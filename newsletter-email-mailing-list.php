@@ -5,7 +5,7 @@
  * Description: Easily allow your readers to get new posts by email (automatically).
  * Author: s-feeds
  * Author URI: http://s-feeds.com
- * Version: 1.2.1
+ * Version: 1.3
  * License: GPLv2 or later
  */
 
