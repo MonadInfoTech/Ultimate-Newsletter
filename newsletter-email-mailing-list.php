@@ -5,7 +5,7 @@
  * Description: Easily allow your readers to get new posts by email (automatically).
  * Author: s-feeds
  * Author URI: http://s-feeds.com
- * Version: 1.3
+ * Version: 1.4
  * License: GPLv2 or later
  */
 
@@ -228,4 +228,15 @@ function un_getverification_code()
 	curl_close($curl);
 }
 
+function un_get_bloginfo($url)
+{
+	$web_url = get_bloginfo($url);
+	
+	//Block to use feedburner url
+	if (preg_match("/(feedburner)/im", $web_url, $match))
+	{
+		$web_url = site_url()."/feed";
+	}
+	return $web_url;
+}
 ?>

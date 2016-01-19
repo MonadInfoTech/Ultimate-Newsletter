@@ -1,7 +1,7 @@
 <?php
 function un_activate_plugin()
 {
-	update_option("un_pluginVersion", "1.3");
+	update_option("un_pluginVersion", "1.4");
 	
 	/* subscription form */
     $options1 = array('un_form_adjustment'=>'yes',
@@ -144,7 +144,7 @@ function UN_getFeedUrl()
         CURLOPT_POST => 1,
         CURLOPT_POSTFIELDS => array(
             'web_url' => get_bloginfo('url'),
-            'feed_url' => get_bloginfo('rss2_url'),
+            'feed_url' => un_get_bloginfo('rss2_url'),
             'email'=>get_bloginfo('admin_email')
         )
     ));
@@ -192,7 +192,7 @@ function un_pingVendor( $post_id )
 						  'author'		=> get_the_author_meta('user_login', $post_data['post_author']),
 						  'category'	=> trim($cats, ","),
 						  'pubDate'		=> $post_data['post_modified'],
-                          'rssurl'		=> esc_url(get_bloginfo('rss2_url'))
+                          'rssurl'		=> esc_url(un_get_bloginfo('rss2_url'))
 						);
 		
 		$curl = curl_init();  
