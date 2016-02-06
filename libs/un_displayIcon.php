@@ -5,38 +5,40 @@ function un_beforAfterePosts( $content )
 {
 	global $post;
 	
-	$option2 = unserialize(get_option('un_section2_options',false));
-	$permaLink = get_permalink($post_>ID);
-	$title = get_the_title($post_>ID);
-	$postContent = get_the_content($post_>ID);
-	
-	if ( is_single() ) 
+	if(!empty($post))
 	{
-		if($option2['un_onpostBefore'] == 'yes')
-		{
-			$iconBefore = un_getShareIcon($option2, $permaLink, $title);
-		}
+		$option2 = unserialize(get_option('un_section2_options',false));
+		$permaLink = get_permalink($post->ID);
+		$title = get_the_title($post->ID);
+		$postContent = get_the_content($post->ID);
 		
-		if($option2['un_onpostAfter'] == 'yes')
+		if ( is_single() ) 
 		{
-			$iconAfter = un_getShareIcon($option2, $permaLink, $title);
+			if($option2['un_onpostBefore'] == 'yes')
+			{
+				$iconBefore = un_getShareIcon($option2, $permaLink, $title);
+			}
+			
+			if($option2['un_onpostAfter'] == 'yes')
+			{
+				$iconAfter = un_getShareIcon($option2, $permaLink, $title);
+			}
+			$content = $iconBefore.$content.$iconAfter;
 		}
-		$content = $iconBefore.$content.$iconAfter;
+		elseif ( is_home() ) 
+		{
+			if($option2['un_onhomeBefore'] == 'yes')
+			{
+				$iconBefore = un_getShareIcon($option2, $permaLink, $title);
+			}
+			
+			if($option2['un_onhomeAfter'] == 'yes')
+			{
+				$iconAfter = un_getShareIcon($option2, $permaLink, $title);
+			}
+			$content = $iconBefore.$content.$iconAfter;
+		}
 	}
-	elseif ( is_home() ) 
-	{
-		if($option2['un_onhomeBefore'] == 'yes')
-		{
-			$iconBefore = un_getShareIcon($option2, $permaLink, $title);
-		}
-		
-		if($option2['un_onhomeAfter'] == 'yes')
-		{
-			$iconAfter = un_getShareIcon($option2, $permaLink, $title);
-		}
-		$content = $iconBefore.$content.$iconAfter;
-	}
-	
 	return $content;
 }
 
@@ -64,13 +66,13 @@ function un_getShareIcon($option2, $permaLink, $title)
 			{
 				$icon .= '<li>'.un_FBlike($permaLink, $option2['un_DisplayCounts']).'</li>';
 			}
-			if($option2['un_rectgp'] == 'yes')
-			{
-				$icon .= '<li id="un_gplusShareicon">'.un_googlePlus($permaLink, $option2['un_DisplayCounts']).'</li>';
-			}
 			if($option2['un_recttwtr'] == 'yes')
 			{
 				$icon .= '<li>'.un_twitterShare($permaLink, $title, $option2['un_DisplayCounts']).'</li>';
+			}
+			if($option2['un_rectgp'] == 'yes')
+			{
+				$icon .= '<li id="un_gplusShareicon">'.un_googlePlus($permaLink, $option2['un_DisplayCounts']).'</li>';
 			}
 			if($option2['un_rectshr'] == 'yes')
 			{

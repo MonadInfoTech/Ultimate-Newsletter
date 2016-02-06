@@ -30,19 +30,19 @@
                     </li>
                     <li>
                         <div class="un_radio_section">
-                            <input name="un_rectgp" <?php echo isChecked('yes', sanitize_text_field($option2['un_rectgp']));?> id="un_rectgp" type="checkbox" value="yes" class="styled" />
+                            <input name="un_recttwtr" <?php echo isChecked('yes', sanitize_text_field($option2['un_recttwtr']));?> id="un_recttwtr" type="checkbox" value="yes" class="styled" />
                         </div>
-                        <a href="#" title="Google Plus" class="un_posticon">
-                            <img src="<?php echo UN_PLUGURL; ?>images/google_plus1.jpg" alt="Google Plus" />
+                        <a href="#" title="twitter" class="un_posticon">
+                            <img src="<?php echo UN_PLUGURL; ?>images/twiiter.png" alt="Twitter like" />
                             <span style="display: none;">18k</span>
                         </a>
                     </li>
                     <li>
                         <div class="un_radio_section">
-                            <input name="un_recttwtr" <?php echo isChecked('yes', sanitize_text_field($option2['un_recttwtr']));?> id="un_recttwtr" type="checkbox" value="yes" class="styled" />
+                            <input name="un_rectgp" <?php echo isChecked('yes', sanitize_text_field($option2['un_rectgp']));?> id="un_rectgp" type="checkbox" value="yes" class="styled" />
                         </div>
-                        <a href="#" title="twitter" class="un_posticon">
-                            <img src="<?php echo UN_PLUGURL; ?>images/twiiter.png" alt="Twitter like" />
+                        <a href="#" title="Google Plus" class="un_posticon">
+                            <img src="<?php echo UN_PLUGURL; ?>images/google_plus1.jpg" alt="Google Plus" />
                             <span style="display: none;">18k</span>
                         </a>
                     </li>

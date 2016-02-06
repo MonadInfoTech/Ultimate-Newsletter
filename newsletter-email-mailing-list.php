@@ -5,7 +5,7 @@
  * Description: Easily allow your readers to get new posts by email (automatically).
  * Author: s-feeds
  * Author URI: http://s-feeds.com
- * Version: 1.4
+ * Version: 1.5
  * License: GPLv2 or later
  */
 
@@ -18,6 +18,7 @@ define('UN_WEBROOT',    str_replace(getcwd(), home_url(), dirname(__FILE__)));
 define('SF_LINK',    	"http://www.specificfeeds.com/");
 
 /* load all files  */
+include(UN_DOCROOT.'/libs/un_pluginNotices.php');
 include(UN_DOCROOT.'/libs/un_install_uninstall.php');
 include(UN_DOCROOT.'/libs/un_Init_JqueryCss.php');
 include(UN_DOCROOT.'/libs/un_subscribe_widget.php');
@@ -29,6 +30,12 @@ include(UN_DOCROOT.'/libs/un_socialHelper.php');
 register_activation_hook(__FILE__, 'un_activate_plugin' );
 register_deactivation_hook(__FILE__, 'un_deactivate_plugin');
 register_uninstall_hook(__FILE__, 'un_Unistall_plugin');
+
+//Update function
+if(!get_option('un_pluginVersion') || get_option('un_pluginVersion') < 1.5)
+{
+	add_action("init", "un_updatePlugin");
+}
 
 //Add Subscriber form css
 add_action("wp_head", "un_addStyleFunction");
@@ -175,7 +182,7 @@ function un_addStyleFunction()
 	<?php
 }
 //Sanitize color code
-if(!function_exists(sanitize_hex_color))
+if(@!function_exists(sanitize_hex_color))
 {
 	function sanitize_hex_color( $color )
 	{
@@ -224,7 +231,10 @@ function un_getverification_code()
      // Send the request & save response to $resp
 	$resp = curl_exec($curl);
 	$resp = json_decode($resp);
-	update_option('un_verificatiom_code', $resp->code);
+	if(isset($resp->code))
+	{
+		update_option('un_verificatiom_code', $resp->code);
+	}
 	curl_close($curl);
 }
 

@@ -1,7 +1,14 @@
 <?php
+function un_updatePlugin()
+{
+	update_option("un_pluginVersion", "1.5");
+	add_option('un_installDate',date('Y-m-d h:i:s'));
+	add_option('un_RatingDiv', "no");
+}
+
 function un_activate_plugin()
 {
-	update_option("un_pluginVersion", "1.4");
+	add_option("un_pluginVersion", "1.5");
 	
 	/* subscription form */
     $options1 = array('un_form_adjustment'=>'yes',
@@ -51,7 +58,9 @@ function un_activate_plugin()
 		'un_textBefor_icons'=> 'Please follow and like us:',
         'un_icons_alignment'=> 'left',
     );
+	
 	add_option('un_section2_options',  serialize($options2));
+	add_option('un_RatingDiv', "no");
 	
 	if(get_option('un_feed_id') && get_option('un_redirect_url'))
 	{
@@ -66,6 +75,7 @@ function un_activate_plugin()
 	
 	update_option('un_feed_id',sanitize_text_field($sffeeds->feed_id));
 	update_option('un_redirect_url',$sffeeds->redirect_url);
+	add_option('un_installDate',date('Y-m-d h:i:s'));
 	
 	/*Activation Setup for (specificfeed)*/
 	UN_setUpfeeds(sanitize_text_field($sffeeds->feed_id));

@@ -95,3 +95,7 @@ li#un_gplusShareicon > div
 .fb_iframe_widget iframe {
     max-width: none;
 }
+.un_sfIcon img
+{
+	height: 20px;
+}
