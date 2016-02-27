@@ -5,7 +5,7 @@
  * Description: Easily allow your readers to get new posts by email (automatically).
  * Author: s-feeds
  * Author URI: http://s-feeds.com
- * Version: 1.5
+ * Version: 1.6
  * License: GPLv2 or later
  */
 
@@ -32,7 +32,7 @@ register_deactivation_hook(__FILE__, 'un_deactivate_plugin');
 register_uninstall_hook(__FILE__, 'un_Unistall_plugin');
 
 //Update function
-if(!get_option('un_pluginVersion') || get_option('un_pluginVersion') < 1.5)
+if(!get_option('un_pluginVersion') || get_option('un_pluginVersion') < 1.6)
 {
 	add_action("init", "un_updatePlugin");
 }

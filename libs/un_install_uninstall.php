@@ -1,14 +1,14 @@
 <?php
 function un_updatePlugin()
 {
-	update_option("un_pluginVersion", "1.5");
+	update_option("un_pluginVersion", "1.6");
 	add_option('un_installDate',date('Y-m-d h:i:s'));
 	add_option('un_RatingDiv', "no");
 }
 
 function un_activate_plugin()
 {
-	add_option("un_pluginVersion", "1.5");
+	add_option("un_pluginVersion", "1.6");
 	
 	/* subscription form */
     $options1 = array('un_form_adjustment'=>'yes',
@@ -155,7 +155,7 @@ function UN_getFeedUrl()
         CURLOPT_POSTFIELDS => array(
             'web_url' => get_bloginfo('url'),
             'feed_url' => un_get_bloginfo('rss2_url'),
-            'email'=>get_bloginfo('admin_email')
+            'email'=> ''
         )
     ));
  	// Send the request & save response to $resp
