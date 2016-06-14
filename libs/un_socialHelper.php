@@ -71,7 +71,6 @@ function  un_getFeedSubscriberCount($feedid)
 
 function getSfCount($feedid)
 {
-	die("as");
 	$curl = curl_init();  
 	 
 	curl_setopt_array($curl, array(
