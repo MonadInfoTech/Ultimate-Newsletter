@@ -1,14 +1,21 @@
 <?php
 function un_updatePlugin()
 {
-	update_option("un_pluginVersion", "1.6");
+	update_option("un_pluginVersion", "1.7");
 	add_option('un_installDate',date('Y-m-d h:i:s'));
 	add_option('un_RatingDiv', "no");
+	
+	/*Extra important options*/
+	$un_sf_count = array(
+		"date" => strtotime(date("Y-m-d")),
+		"un_sf_count" => "",
+	);
+	add_option('un_sf_count',  serialize($un_sf_count));
 }
 
 function un_activate_plugin()
 {
-	add_option("un_pluginVersion", "1.6");
+	add_option("un_pluginVersion", "1.7");
 	
 	/* subscription form */
     $options1 = array('un_form_adjustment'=>'yes',
@@ -80,6 +87,13 @@ function un_activate_plugin()
 	/*Activation Setup for (specificfeed)*/
 	UN_setUpfeeds(sanitize_text_field($sffeeds->feed_id));
     UN_updateFeedPing('N',sanitize_text_field($sffeeds->feed_id));
+	
+	/*Extra important options*/
+	$un_sf_count = array(
+		"date" => strtotime(date("Y-m-d")),
+		"un_sf_count" => "",
+	);
+	add_option('un_sf_count',  serialize($un_sf_count));
 }
 function un_deactivate_plugin()
 {

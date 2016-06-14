@@ -5,7 +5,7 @@
  * Description: Easily allow your readers to get new posts by email (automatically).
  * Author: s-feeds
  * Author URI: http://s-feeds.com
- * Version: 1.6
+ * Version: 1.7
  * License: GPLv2 or later
  */
 
@@ -32,7 +32,7 @@ register_deactivation_hook(__FILE__, 'un_deactivate_plugin');
 register_uninstall_hook(__FILE__, 'un_Unistall_plugin');
 
 //Update function
-if(!get_option('un_pluginVersion') || get_option('un_pluginVersion') < 1.6)
+if(!get_option('un_pluginVersion') || get_option('un_pluginVersion') < 1.7)
 {
 	add_action("init", "un_updatePlugin");
 }
@@ -76,10 +76,10 @@ function un_addStyleFunction()
 				height: <?php echo intval($option1['un_form_height']) ?>px !important;
 				<?php endif;?>
 				<?php if(sanitize_text_field($option1['un_form_border']) == 'yes') : ?>
-				border: <?php echo intval($option1['un_form_border_thickness'])."px solid ".sanitize_hex_color($option1['un_form_border_color']);?> !important;
+				border: <?php echo intval($option1['un_form_border_thickness'])."px solid ".un_validate_hex_color($option1['un_form_border_color']);?> !important;
 				<?php endif;?>
 				padding: 18px 0px !important;
-				background-color: <?php echo sanitize_hex_color($option1['un_form_background']) ?> !important;
+				background-color: <?php echo un_validate_hex_color($option1['un_form_background']) ?> !important;
 			}
 			.un_subscribe_Popinner form
 			{
@@ -93,7 +93,7 @@ function un_addStyleFunction()
 				<?php } else{ ?>
 				font-weight: <?php echo sanitize_text_field($option1['un_form_heading_fontstyle']) ?> !important;
 				<?php }?>
-				color: <?php echo sanitize_hex_color($option1['un_form_heading_fontcolor']) ?> !important;
+				color: <?php echo un_validate_hex_color($option1['un_form_heading_fontcolor']) ?> !important;
 				font-size: <?php echo intval($option1['un_form_heading_fontsize'])."px" ?> !important;
 				text-align: <?php echo sanitize_text_field($option1['un_form_heading_fontalign']) ?> !important;
 				margin: 0 0 10px !important;
@@ -117,7 +117,7 @@ function un_addStyleFunction()
 				<?php } else{ ?>
 				font-weight: <?php echo sanitize_text_field($option1['un_form_field_fontstyle']) ?> !important;
 				<?php }?>
-				color: <?php echo sanitize_hex_color($option1['un_form_field_fontcolor']); ?> !important;
+				color: <?php echo un_validate_hex_color($option1['un_form_field_fontcolor']); ?> !important;
 				font-size: <?php echo intval($option1['un_form_field_fontsize'])."px" ?> !important;
 				text-align: <?php echo sanitize_text_field($option1['un_form_field_fontalign']); ?> !important;
 			}
@@ -128,7 +128,7 @@ function un_addStyleFunction()
 				<?php } else{ ?>
 				font-weight: <?php echo sanitize_text_field($option1['un_form_field_fontstyle']) ?> !important;
 				<?php }?>
-				color: <?php echo sanitize_hex_color($option1['un_form_field_fontcolor']); ?> !important;
+				color: <?php echo un_validate_hex_color($option1['un_form_field_fontcolor']); ?> !important;
 				font-size: <?php echo intval($option1['un_form_field_fontsize'])."px" ?> !important;
 				text-align: <?php echo sanitize_text_field($option1['un_form_field_fontalign']); ?> !important;
 			}
@@ -139,7 +139,7 @@ function un_addStyleFunction()
 				<?php } else{ ?>
 				font-weight: <?php echo sanitize_text_field($option1['un_form_field_fontstyle']) ?> !important;
 				<?php }?>
-				color: <?php echo sanitize_hex_color($option1['un_form_field_fontcolor']); ?> !important;
+				color: <?php echo un_validate_hex_color($option1['un_form_field_fontcolor']); ?> !important;
 				font-size: <?php echo intval($option1['un_form_field_fontsize'])."px" ?> !important;
 				text-align: <?php echo sanitize_text_field($option1['un_form_field_fontalign']); ?> !important;
 			}
@@ -150,7 +150,7 @@ function un_addStyleFunction()
 				<?php } else{ ?>
 				font-weight: <?php echo sanitize_text_field($option1['un_form_field_fontstyle']) ?> !important;
 				<?php }?>
-				color: <?php echo sanitize_hex_color($option1['un_form_field_fontcolor']); ?> !important;
+				color: <?php echo un_validate_hex_color($option1['un_form_field_fontcolor']); ?> !important;
 				font-size: <?php echo intval($option1['un_form_field_fontsize'])."px" ?> !important;
 				text-align: <?php echo sanitize_text_field($option1['un_form_field_fontalign']); ?> !important;
 			}
@@ -161,7 +161,7 @@ function un_addStyleFunction()
 				<?php } else{ ?>
 				font-weight: <?php echo sanitize_text_field($option1['un_form_field_fontstyle']) ?> !important;
 				<?php }?>
-				color: <?php echo sanitize_hex_color($option1['un_form_field_fontcolor']); ?> !important;
+				color: <?php echo un_validate_hex_color($option1['un_form_field_fontcolor']); ?> !important;
 				font-size: <?php echo intval($option1['un_form_field_fontsize'])."px" ?> !important;
 				text-align: <?php echo sanitize_text_field($option1['un_form_field_fontalign']); ?> !important;
 			}
@@ -173,18 +173,18 @@ function un_addStyleFunction()
 				<?php } else{ ?>
 				font-weight: <?php echo sanitize_text_field($option1['un_form_button_fontstyle']) ?> !important;
 				<?php }?>
-				color: <?php echo sanitize_hex_color($option1['un_form_button_fontcolor']); ?> !important;
+				color: <?php echo un_validate_hex_color($option1['un_form_button_fontcolor']); ?> !important;
 				font-size: <?php echo intval($option1['un_form_button_fontsize'])."px" ?> !important;
 				text-align: <?php echo sanitize_text_field($option1['un_form_button_fontalign']); ?> !important;
-				background-color: <?php echo sanitize_hex_color($option1['un_form_button_background']); ?> !important;
+				background-color: <?php echo un_validate_hex_color($option1['un_form_button_background']); ?> !important;
 			}
 		</style>
 	<?php
 }
 //Sanitize color code
-if(@!function_exists(sanitize_hex_color))
+if(@!function_exists(un_validate_hex_color))
 {
-	function sanitize_hex_color( $color )
+	function un_validate_hex_color( $color )
 	{
 		if ( '' === $color )
 			return '';

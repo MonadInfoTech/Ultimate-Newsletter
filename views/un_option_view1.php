@@ -120,7 +120,7 @@
                     	<label>Color</label>
                         <input type="text" id="un_form_border_color" name="un_form_border_color" data-default-color="#b5b5b5"
                         	value="<?php echo ($option1['un_form_border_color']!='')
-										? sanitize_hex_color($option1['un_form_border_color']) : '' ;
+										? un_validate_hex_color($option1['un_form_border_color']) : '' ;
 									?>" />
                     </div>
                 </div>
@@ -130,7 +130,7 @@
 					<div class="un_field">
                     	<input id="un_form_background" data-default-color="#FFFFFF" type="text" name="un_form_background"
                         	value="<?php echo ($option1['un_form_background']!='')
-										? sanitize_hex_color($option1['un_form_background']) : '' ;
+										? un_validate_hex_color($option1['un_form_background']) : '' ;
 									?>">
                     </div>
 				</div>
@@ -180,7 +180,7 @@
                 	<div class="un_field">
                     	<label class="un_same_width">Font color</label>
                         <input type="text" name="un_form_heading_fontcolor" data-default-color="#000000" id="un_form_heading_fontcolor" value="<?php echo ($option1['un_form_heading_fontcolor']!='')
-										? sanitize_hex_color($option1['un_form_heading_fontcolor']) : '' ;
+										? un_validate_hex_color($option1['un_form_heading_fontcolor']) : '' ;
 									?>">
                     </div>
                     <div class="un_field">
@@ -317,7 +317,7 @@
                 	<div class="un_field">
                     	<label class="un_same_width">Font color</label>
                         <input type="text" name="un_form_button_fontcolor" data-default-color="#000000" id="un_form_button_fontcolor" value="<?php echo ($option1['un_form_button_fontcolor']!='')
-										? sanitize_hex_color($option1['un_form_button_fontcolor']) : '' ;
+										? un_validate_hex_color($option1['un_form_button_fontcolor']) : '' ;
 									?>">
                     </div>
                     <div class="un_field">
@@ -345,7 +345,7 @@
                 	<div class="un_field">
                     	<label class="un_same_width"><b>Button color:</b></label>
                         <input type="text" name="un_form_button_background" data-default-color="#dedede" id="un_form_button_background" value="<?php echo ($option1['un_form_button_background']!='')
-										? sanitize_hex_color($option1['un_form_button_background']) : '' ;
+										? un_validate_hex_color($option1['un_form_button_background']) : '' ;
 									?>">
                     </div>
                 </div>    

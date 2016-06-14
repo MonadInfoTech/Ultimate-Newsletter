@@ -43,30 +43,30 @@ function un_options_unsave1()
 		'un_form_width'				=>	intval($un_form_width),
 		'un_form_border'			=>	sanitize_text_field($un_form_border),
 		'un_form_border_thickness'	=>	intval($un_form_border_thickness),
-		'un_form_border_color'		=>	sanitize_hex_color($un_form_border_color),
-		'un_form_background'		=>	sanitize_hex_color($un_form_background),
+		'un_form_border_color'		=>	un_validate_hex_color($un_form_border_color),
+		'un_form_background'		=>	un_validate_hex_color($un_form_background),
 		
 		'un_form_heading_text'		=>	sanitize_text_field(stripslashes($un_form_heading_text)),
 		'un_form_heading_font'		=>	sanitize_text_field($un_form_heading_font),
 		'un_form_heading_fontstyle'	=>	sanitize_text_field($un_form_heading_fontstyle),
-		'un_form_heading_fontcolor'	=>	sanitize_hex_color($un_form_heading_fontcolor),
+		'un_form_heading_fontcolor'	=>	un_validate_hex_color($un_form_heading_fontcolor),
 		'un_form_heading_fontsize'	=>	intval($un_form_heading_fontsize),
 		'un_form_heading_fontalign'	=>	sanitize_text_field($un_form_heading_fontalign),
 		
 		'un_form_field_text'		=>	sanitize_text_field(stripslashes($un_form_field_text)),
 		'un_form_field_font'		=>	sanitize_text_field($un_form_field_font),
 		'un_form_field_fontstyle'	=>	sanitize_text_field($un_form_field_fontstyle),
-		/*'un_form_field_fontcolor'	=>	sanitize_hex_color($un_form_field_fontcolor),*/
+		/*'un_form_field_fontcolor'	=>	un_validate_hex_color($un_form_field_fontcolor),*/
 		'un_form_field_fontsize'	=>	intval($un_form_field_fontsize),
 		'un_form_field_fontalign'	=>	sanitize_text_field($un_form_field_fontalign),
 		
 		'un_form_button_text'		=>	sanitize_text_field(stripslashes($un_form_button_text)),
 		'un_form_button_font'		=>	sanitize_text_field($un_form_button_font),
 		'un_form_button_fontstyle'	=>	sanitize_text_field($un_form_button_fontstyle),
-		'un_form_button_fontcolor'	=>	sanitize_hex_color($un_form_button_fontcolor),
+		'un_form_button_fontcolor'	=>	un_validate_hex_color($un_form_button_fontcolor),
 		'un_form_button_fontsize'	=>	intval($un_form_button_fontsize),
 		'un_form_button_fontalign'	=>	sanitize_text_field($un_form_button_fontalign),
-		'un_form_button_background'	=>	sanitize_hex_color($un_form_button_background),
+		'un_form_button_background'	=>	un_validate_hex_color($un_form_button_background),
 	);
 	
 	if(un_arrayFilter($up_option1))

@@ -35,6 +35,43 @@ function un_Subscribelike($permalink, $show_count)
 /* get no of subscribers from specificfeeds for current blog count*/
 function  un_getFeedSubscriberCount($feedid)
 {
+	$un_sf_count = unserialize(get_option('un_sf_count',false));
+		
+	/*if date is empty (for decrease request count)*/
+	if(empty($un_sf_count["date"]))
+	{
+		$un_sf_count["date"] = strtotime(date("Y-m-d"));
+		$counts = getSfCount($feedid);
+		$un_sf_count["un_sf_count"] = $counts;
+		update_option('un_sf_count',  serialize($un_sf_count));
+	}
+	else
+	{
+		 $diff = date_diff(
+			date_create(
+				date("Y-m-d", $un_sf_count["date"])
+			),
+			date_create(
+				date("Y-m-d")
+		 ));
+		 if($diff->format("%a") > 1)
+		 {
+			$un_sf_count["date"] = strtotime(date("Y-m-d"));
+			$counts = getSfCount($feedid);
+			$un_sf_count["un_sf_count"] = $counts;
+			update_option('un_sf_count',  serialize($un_sf_count));
+		 }
+		 else
+		 {
+			 $counts = (empty($un_sf_count["un_sf_count"])) ? 0 : $un_sf_count["un_sf_count"];
+		 }
+	}
+	return $counts;
+}
+
+function getSfCount($feedid)
+{
+	die("as");
 	$curl = curl_init();  
 	 
 	curl_setopt_array($curl, array(
