@@ -3,7 +3,7 @@ Contributors: s-feeds
 Tags: newsletter, email list, subscribe, subscription form, follow, subscription, RSS2Email
 Requires at least: 3.0.1
 Tested up to: 4.5.2
-Stable tag: 1.7
+Stable tag: 1.8
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

@@ -1,7 +1,7 @@
 <?php
 function un_updatePlugin()
 {
-	update_option("un_pluginVersion", "1.7");
+	update_option("un_pluginVersion", "1.8");
 	add_option('un_installDate',date('Y-m-d h:i:s'));
 	add_option('un_RatingDiv', "no");
 	
@@ -15,7 +15,7 @@ function un_updatePlugin()
 
 function un_activate_plugin()
 {
-	add_option("un_pluginVersion", "1.7");
+	add_option("un_pluginVersion", "1.8");
 	
 	/* subscription form */
     $options1 = array('un_form_adjustment'=>'yes',
@@ -167,9 +167,10 @@ function UN_getFeedUrl()
         CURLOPT_USERAGENT => 'sf rss request',
         CURLOPT_POST => 1,
         CURLOPT_POSTFIELDS => array(
-            'web_url' => get_bloginfo('url'),
-            'feed_url' => un_get_bloginfo('rss2_url'),
-            'email'=> ''
+            'web_url' 	=> get_bloginfo('url'),
+            'feed_url' 	=> un_get_bloginfo('rss2_url'),
+            'email'		=> '',
+			'subscriber_type' => 'NLWP'
         )
     ));
  	// Send the request & save response to $resp
